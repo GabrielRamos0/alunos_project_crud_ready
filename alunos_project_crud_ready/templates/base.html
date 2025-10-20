@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{% block title %}Alunos{% endblock %}</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;background:#f5f7fa;margin:0;padding:20px}
+    .container{max-width:900px;margin:0 auto;background:#fff;padding:20px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+    nav{margin-bottom:12px}
+    a{color:#0b63d6}
+    .msg{padding:10px;border-radius:6px;margin-bottom:12px;background:#e6ffed;border:1px solid #c7f0d1;color:#0f5132}
+    .btn{display:inline-block;padding:8px 12px;border-radius:6px;background:#0b63d6;color:white;text-decoration:none}
+    .btn-danger{background:#dc3545}
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{padding:8px;border-bottom:1px solid #eee;text-align:left}
+    th{background:#f0f6ff}
+    .form-control{width:100%;padding:8px;margin:6px 0;border:1px solid #ddd;border-radius:6px}
+    label{font-weight:600}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="{% url 'lista_alunos' %}">Home</a> | 
+      <a href="{% url 'aluno_novo' %}">Novo Aluno</a> | 
+      <a href="/admin/">Admin</a>
+    </nav>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="msg">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{% if form.instance.pk %}Editar Aluno{% else %}Novo Aluno{% endif %}</h1>
+<form method="post" novalidate>
+  {% csrf_token %}
+  {{ form.non_field_errors }}
+  <label for="{{ form.nome.id_for_label }}">Nome</label>
+  {{ form.nome }}
+  <label for="{{ form.matricula.id_for_label }}">Matrícula</label>
+  {{ form.matricula }}
+  <div style="margin-top:10px">
+    <button class="btn" type="submit">Salvar</button>
+    <a href="{% url 'lista_alunos' %}" style="margin-left:8px">Cancelar</a>
+  </div>
+</form>
+{% endblock %}
